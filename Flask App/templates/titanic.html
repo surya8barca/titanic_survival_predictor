@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script>
+        function validate(){
+            var x = document.forms["titanic"]["age"].value;
+            if(x < 1 || x > 100){
+                alert("Age must be between 1 to 100");
+                return false;
+            }
+            var y = document.forms['titanic']['nosiblings'].value;
+            if(y<0)
+            {
+                alert("Number of Siblings can't be less than 0");
+                return false;
+            }
+            var z = document.forms['titanic']['noparents'].value;
+            if(z<0)
+            {
+                alert("Number of Parents can't be less than 0")
+            }
+            return true;
+        }
+    </script>
+    <title>Titanic Survival Prediction</title>
+</head>
+<body>
+    <header>
+        <div id="headings">
+            <center>
+                <h1>Titanic Survival Prediction<br>by Machine Learning</h1>
+                <h3>Logistic Regression Algorithm</h3>
+            </center>
+        </div>
+    </header>
+    <div id='form'>
+        <form method="GET" name="titanic" action="/predict" onsubmit="return validate()" enctype="multipart/form-data">
+            <fieldset>
+                <center>
+                    <h1>Enter Details of the Passenger</h1>
+                    <h4>Passenger Class</h4>
+                    <input type="radio" name="pclass" value=1 required>
+                    <label for="first">First</label>
+                     &ensp;&ensp;&ensp;&ensp;&ensp;
+                     <input type="radio" name="pclass" value=2 required>
+                    <label for="second">Second</label>
+                     &ensp;&ensp;&ensp;&ensp;&ensp;
+                     <input type="radio" name="pclass" value=3 required>
+                    <label for="third">Third</label>
+                    <br><br>
+                    <label for="age">Age</label>
+                <input type="number" name="age" placeholder="(between 1 to 100)" required>
+                <label for="nosiblings">Number of Siblings Aboard</label>
+                <input type="number" name="nosiblings" placeholder="(0 for no siblings aboard)" required>
+                <label for="noparents">Number of Parents Aboard</label>
+                <input type="number" name="noparents" placeholder="(0 for no parents aboard)" required>
+                <label for="fare">Fare of the Passenger</label>
+                <input type="number" step="0.01" name="fare" placeholder="ticket fare" required>
+                <h4>Gender</h4>
+                <input type="radio" name="gender" value=1 required>
+                <label for="male">Male</label>
+                 &ensp;&ensp;&ensp;&ensp;&ensp;
+                 <input type="radio" name="gender" value=0 required>
+                <label for="female">Female</label><br><br>
+                <h4>Port of Embarkation</h4>
+                <input type="radio" name="embark" value='Q' required>
+                <label for="q">Queenstown</label>
+                 &ensp;&ensp;&ensp;&ensp;&ensp;
+                 <input type="radio" name="embark" value='S' required>
+                <label for="s">Southamptom</label><br><br>
+                <center>
+                    <input type="submit" value="Predict"></button>
+                </center>
+            </center>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
